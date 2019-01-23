@@ -1,7 +1,13 @@
+
+
+
+
 Rails.application.routes.draw do
-  namespace :api do
-    namespace :v1 do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+
+  scope '/api' do
+    root to: "courses#index"
       resources :courses
-    end
   end
 end
